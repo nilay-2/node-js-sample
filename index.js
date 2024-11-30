@@ -10,7 +10,6 @@ const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
 const host = process.env.host 
 
-console.log(`ENV: DB: ${database} | user: ${username} | pass: ${password} | host: ${host}`)
 
 const sequelize = new Sequelize(database, username, password, {
   host: host,
@@ -49,4 +48,6 @@ app.get('/', function(request, response) {
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
+  console.log(`ENV: DB: ${database} | user: ${username} | pass: ${password} | host: ${host}`)
+
 })
