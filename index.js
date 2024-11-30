@@ -23,6 +23,22 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', error);
   })
 
+  // Define a route to fetch data from the "nilay-images" table
+app.get('/nilay-images', async (req, res) => {
+  try {
+    const [results] = await sequelize.query('SELECT * FROM `products`');
+    res.json({
+      success: true,
+      data: results,
+    });
+  } catch (error) {
+    console.error('Error executing query:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch data from nilay-images table',
+    });
+  }
+});
 
 app.get('/', function(request, response) {
   response.send('Hello World!')
