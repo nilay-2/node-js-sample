@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'))
 const database = process.env.DB
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
-const host = process.env.host
+const host = process.env.host 
 
 const sequelize = new Sequelize(database, username, password, {
   host: host,
