@@ -29,7 +29,7 @@ services:
       - DB_PASSWORD=root
       - host=mysql
     networks:
-      - app-network
+      - sample-node-mysql-network
     ports:
       - "5000:5000"
     depends_on:
