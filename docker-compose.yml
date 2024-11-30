@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ecommerce
+    volumes:
+      - my-mysql-data:/var/lib/mysql
+    networks:
+      - sample-node-mysql-network
+
+  node:
+    build:
+      context: .
+    container_name: node-app
+    environment:
+      - DB=ecommerce
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - host=mysql
+    networks:
+      - sample-node-mysql-network
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    restart: always
+
+volumes:
+  my-mysql-data:
+
+networks:
+  sample-node-mysql-network:
