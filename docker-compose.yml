@@ -11,6 +11,8 @@ services:
       - my-mysql-data:/var/lib/mysql
     networks:
       - sample-node-mysql-network
+    ports:
+      - "3306:3306"
 
   node:
     build:
