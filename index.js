@@ -2,9 +2,9 @@ var express = require('express')
 const { Sequelize } = require('sequelize');
 var app = express()
 
-app.set('port', (process.env.PORT || 5000))
-app.use(express.static(__dirname + '/public'))
 app.use(express.json())
+
+app.use(express.static(__dirname + '/public'))
 const database = process.env.DB
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
@@ -64,7 +64,7 @@ app.get('/', function(request, response) {
 })
 
 
-app.listen(app.get('port'), function() {
+app.listen(5000 || process.env.PORT, function() {
   console.log("Node app is running at localhost:" + app.get('port'))
   console.log(`ENV: DB: ${database} | user: ${username} | pass: ${password} | host: ${host}`)
 
