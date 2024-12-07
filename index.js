@@ -4,7 +4,7 @@ var app = express()
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
-
+app.use(express.json())
 const database = process.env.DB
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
@@ -44,6 +44,7 @@ app.get('/getProducts', async (req, res) => {
 app.post('/insert-data', async (req, res) => {
   try {
     const {productName} = req.body;
+    console.log(productName);
     const [results] = await sequelize.query(`INSERT INTO products (name) VALUES ('${productName}')`);
     res.json({
       success: true,
