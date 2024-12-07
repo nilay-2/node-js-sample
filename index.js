@@ -41,10 +41,10 @@ app.get('/getProducts', async (req, res) => {
   }
 });
 
-app.get('insert-data', async (req, res) => {
+app.post('insert-data', async (req, res) => {
   try {
     const {productName} = req.query;
-    const [results] = await sequelize.query(`INSERT INTO PRODUCTS (name) VALUES ('${productName}')`);
+    const [results] = await sequelize.query(`INSERT INTO products (name) VALUES ('${productName}')`);
     res.json({
       success: true,
       data: results,
