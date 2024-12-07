@@ -25,7 +25,7 @@ sequelize.authenticate()
   })
 
   // Define a route to fetch data from the "nilay-images" table
-app.get('/nilay-images', async (req, res) => {
+app.get('/getProducts', async (req, res) => {
   try {
     const [results] = await sequelize.query('SELECT * FROM `products`');
     res.json({
@@ -36,10 +36,27 @@ app.get('/nilay-images', async (req, res) => {
     console.error('Error executing query:', error);
     res.status(500).json({
       success: false,
-      error: 'Failed to fetch data from nilay-images table',
+      error: 'Failed to fetch data from products table',
     });
   }
 });
+
+app.get('insert-data', async (req, res) => {
+  try {
+    const {productName} = req.query;
+    const [results] = await sequelize.query(`INSERT INTO PRODUCTS (name) VALUES ('${productName}')`);
+    res.json({
+      success: true,
+      data: results,
+    });
+  } catch (error) {
+    console.error('Error executing query:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch data from products table',
+    });
+  }
+})
 
 app.get('/', function(request, response) {
   response.send('Hello World!')
