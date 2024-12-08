@@ -40,8 +40,8 @@ services:
 
 volumes:
   node-mysql-data:
-    external: true
+    # external: true
     
 networks:
   node-mysql-network:
-    external: true
+    # external: true
