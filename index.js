@@ -54,7 +54,7 @@ app.post('/insert-data', async (req, res) => {
     console.error('Error executing query:', error);
     res.status(500).json({
       success: false,
-      error: 'Failed to fetch data from products table',
+      error: 'Failed to insert data from products table',
     });
   }
 })
