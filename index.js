@@ -12,7 +12,7 @@ const host = process.env.host || 'mysql-cont-1'
 const port = process.env.DB_PORT || 3306
 
 
-const sequelize = new Sequelize('mysql://root:root@mysql-cont-1:3306/ecommerce', {
+const sequelize = new Sequelize('mysql://root:root@localhost:3306/ecommerce', {
   host: host,
   dialect: 'mysql'
 });
