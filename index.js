@@ -8,11 +8,11 @@ app.use(express.static(__dirname + '/public'))
 const database = process.env.DB || 'ecommerce'
 const username = process.env.DB_USERNAME || 'root'
 const password = process.env.DB_PASSWORD || 'root'
-const host = process.env.host || 'localhost'
+const host = process.env.host || 'mysql-cont-1'
 const port = process.env.DB_PORT || 3306
 
 
-const sequelize = new Sequelize(database, username, password, {
+const sequelize = new Sequelize('mysql://root:root@mysql-cont-1:3306/ecommerce', {
   host: host,
   dialect: 'mysql'
 });
