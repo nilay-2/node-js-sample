@@ -69,7 +69,7 @@ app.get('/', function(request, response) {
   response.send('Hello World!')
 })
 
-app.listen(5000 || process.env.PORT, '0.0.0.0' ,function() {
+app.listen(5000 || process.env.PORT ,function() {
   console.log("Node app is running at localhost:" + app.get('port'))
   console.log(`ENV: DB: ${database} | user: ${username} | pass: ${password} | host: ${host} | db port: ${port}`)
 
