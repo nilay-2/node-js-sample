@@ -22,7 +22,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
     container_name: node-app
     environment:
       DB: ecommerce
@@ -41,7 +41,7 @@ services:
       - .:/app
       # Type: volume for node_modules persistence in the container
       - node_modules:/app/node_modules
-    command: npm run start # Runs development-specific scripts
+    command: npm run dev # Runs development-specific scripts
     restart: always
 
 volumes:
