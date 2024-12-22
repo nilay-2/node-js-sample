@@ -61,6 +61,10 @@ app.post('/insert-data', async (req, res) => {
   }
 })
 
+app.get('/ping', (req, res) =>{
+  res.send('pong, baby, lets party!!!, I love tini tomy!!')
+})
+
 app.get('/', function(request, response) {
   response.send('Hello World!')
 })
